@@ -9,6 +9,19 @@ import Social5 from "../../assets/Vector(7).svg"
 
 
 
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../service/firebase";
+
+const docRef = doc(db, "task");
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+} else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+}
+
 
 
 
@@ -21,7 +34,8 @@ export default function Main() {
                     <span> <a href=""> <img src={Social1} alt="" /></a> Criar nova tarefa </span>
                     <div className="columm bf">
                         <input type="text" placeholder="Nome da tarefa" />
-                        <button>
+                        <button >
+                            
                             <img src={Social4} alt="" />
                         </button>
                     </div>
